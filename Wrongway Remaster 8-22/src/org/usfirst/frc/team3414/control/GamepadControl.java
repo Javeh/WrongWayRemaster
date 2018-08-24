@@ -1,10 +1,11 @@
 package org.usfirst.frc.team3414.control;
 
+import org.usfirst.frc.team3414.actuators.ActuatorConfig;
+import org.usfirst.frc.team3414.actuators.Angler;
+import org.usfirst.frc.team3414.actuators.Elevator;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import src.org.usfirst.frc.team3414.actuators.ActuatorConfig;
-import src.org.usfirst.frc.team3414.actuators.Angler;
-import src.org.usfirst.frc.team3414.actuators.Elevator;
 
 public class GamepadControl {
 	Angler angler = new Angler();
@@ -86,10 +87,11 @@ public class GamepadControl {
 	public void intakeSetSpeed(double speed) {
 		angler.intakeSetSpeed(speed);
 	}
-	)
-//		(gamepad.getButtonState(1))
+}
+
+/*	(gamepad.getButtonState(1))
 //				&& ActuatorConfig.getInstance().talonIntakeAngler().getSensorCollection().getQuadraturePosition() < -150)
 //				!(ActuatorConfig.getInstance().talonIntakeAngler().getSensorCollection().isFwdLimitSwitchClosed()))
 		{
 			ActuatorConfig.getInstance().getMotorIntakeAngler().setSpeed(.45);//0.45, 40
-}
+*/

@@ -1,9 +1,10 @@
 
 package org.usfirst.frc.team3414.auton;
 
+import org.usfirst.frc.team3414.actuators.ActuatorConfig;
+
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Preferences;
-import src.org.usfirst.frc.team3414.actuators.ActuatorConfig;
 //TODO Autonomous Selection Screen
 public class AutonPicker {
 	static Preferences prefs;

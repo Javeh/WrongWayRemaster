@@ -6,7 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-import src.org.usfirst.frc.team3414.actuators.ActuatorConfig;
+import org.usfirst.frc.team3414.actuators.ActuatorConfig;
 
 //TODO Make sure you put in else statements to stop motors
 public class Controller {

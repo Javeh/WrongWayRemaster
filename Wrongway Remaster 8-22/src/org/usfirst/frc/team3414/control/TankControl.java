@@ -1,8 +1,9 @@
 package org.usfirst.frc.team3414.control;
 
+import org.usfirst.frc.team3414.actuators.ActuatorConfig;
+import org.usfirst.frc.team3414.actuators.Drive;
+
 import edu.wpi.first.wpilibj.Joystick;
-import src.org.usfirst.frc.team3414.actuators.ActuatorConfig;
-import src.org.usfirst.frc.team3414.actuators.Drive;
 
 public class TankControl {
 	Joystick leftJoy;

@@ -1,6 +1,6 @@
 package org.usfirst.frc.team3414.auton;
 
-import src.org.usfirst.frc.team3414.control.Controller;
+import org.usfirst.frc.team3414.control.Controller;
 
 public class Auton {
 	/*
