@@ -121,8 +121,11 @@ public class GamepadControl {
 	public double getAnglerSpeed(){
 		return angler.getAnglerSpeed();
 	}
-	public double getIntakeSpeed() {
-		return angler.getIntakeSpeed();
+	public double getIntakeSpeedLeft() {
+		return angler.getIntakeSpeedLeft();
+	}
+	public double getIntakeSpeedRight() {
+		return angler.getIntakeSpeedRight();
 	}
 	public void stop() {
 		elevator.off();
@@ -132,8 +135,8 @@ public class GamepadControl {
 	public void anglerSetSpeed(double speed) {
 		angler.setSpeed(speed);
 	}
-	public void intakeSetSpeed(double speed) {
-		angler.intakeSetSpeed(speed);
+	public void intakeSetSpeed(double speedLeft, double speedRight) {
+		angler.intakeSetSpeed(speedLeft, speedRight);
 	}
 }
 

@@ -73,7 +73,8 @@ public class Controller {
 			// Angler
 			writer.append("," + gamepadControl.getAnglerSpeed());
 			// Intake
-			writer.append("," + gamepadControl.getIntakeSpeed());
+			writer.append("," + gamepadControl.getIntakeSpeedLeft());
+			writer.append("," + gamepadControl.getIntakeSpeedRight());
 			// barrel motors
 			/*
 			 * writer.append("," + storage.robot.getBarrelMotorLeft().get());
@@ -166,7 +167,7 @@ public class Controller {
 				tankControl.autonDrive(scanner.nextDouble(), scanner.nextDouble());
 				gamepadControl.elevatorSetSpeed(scanner.nextDouble());
 				gamepadControl.anglerSetSpeed(scanner.nextDouble());
-				gamepadControl.intakeSetSpeed(scanner.nextDouble());
+				gamepadControl.intakeSetSpeed(scanner.nextDouble(), scanner.nextDouble());
 				/*
 				 * storage.robot.getFrontLeftMotor().setX(scanner.nextDouble());
 				 * storage.robot.getFrontRightMotor().setX(scanner.nextDouble());

@@ -53,8 +53,8 @@ public class Angler {
 	public void setSpeed(double speed) {		
 		angler.set(ControlMode.PercentOutput, speed);
 	}
-	public void intakeSetSpeed(double speed) {
-		intake.setSpeed(speed);
+	public void intakeSetSpeed(double speedLeft, double speedRight) {
+		intake.setSpeedIntake(speedLeft, speedRight);
 	}
 	public void outtakePlace() {
 		intake.outtakePlace();
@@ -67,6 +67,14 @@ public class Angler {
 	}
 	public void intakeOff() {
 		intake.off();
+	}
+	public double getIntakeSpeedLeft() {
+		// TODO Auto-generated method stub
+		return intake.globalspeedfront;
+	}
+	public double getIntakeSpeedRight() {
+		// TODO Auto-generated method stub
+		return intake.globalspeedfront;
 	}
 	}
 

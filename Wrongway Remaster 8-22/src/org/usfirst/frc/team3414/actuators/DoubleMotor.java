@@ -9,6 +9,8 @@ public class DoubleMotor {
 	public TalonSRX front; //MotorOne (Intake)
 	public TalonSRX rear; //MotorTwo (Intake)
 	double globalspeed;
+	double globalspeedfront;
+	double globalspeedrear;
 	public DoubleMotor(int frontID, int rearID) {
 		front = new TalonSRX(frontID);
 		rear = new TalonSRX(rearID);
@@ -34,9 +36,15 @@ public class DoubleMotor {
 	public void autonInitRear() {
 		rear.getSensorCollection().setQuadraturePosition(0, 10);
 	}
-	public void setSpeed(double speed) { // putting this in as a homage to when TalonSRX or Talon or whatever was called
+	public void setSpeedIntake(double speedLeft, double speedRight) { // putting this in as a homage to when TalonSRX or Talon or whatever was called
 											// had an actual good method name
-		globalspeed = speed;
+
+		front.set(ControlMode.PercentOutput, speedLeft);
+		globalspeedfront = speedLeft;
+		rear.set(ControlMode.PercentOutput, speedRight);
+		globalspeedfront = speedRight;
+	}
+	public void setSpeed(double speed) {
 		front.set(ControlMode.PercentOutput, speed);
 		rear.set(ControlMode.PercentOutput, speed);
 	}
@@ -57,17 +65,19 @@ public class DoubleMotor {
 		//front.reset
 	}
 	public double getFrontSpeed() {
-		return globalspeed;
+		return globalspeedfront;
 	}
 	public double getRearSpeed() {
-		return globalspeed;
+		return globalspeedrear;
 	}
 	public double getSpeed() {
 		return globalspeed;
 	}
 	public void spin() {
 		front.set(ControlMode.PercentOutput, .5);
+		globalspeedfront = .5;
 		rear.set(ControlMode.PercentOutput, -.5);
+		globalspeedfront = -.5;
 	}
 	public void teleopInit() {
 		front.setNeutralMode(NeutralMode.Brake);

@@ -9,6 +9,6 @@ public class GamepadConfig {
 	public static int DOWN_BUTTON = 3;
 	public static int ANGLE_UP_BUTTON; // D-Pad based, don't use for now
 	public static int ANGLE_DOWN_BUTTON; // D-Pad based, don't use for now
-	public static int UNJAM_BUTTON;
+	public static int UNJAM_BUTTON = 1;
 	public static int RECORD_BUTTON = 3;
 }
