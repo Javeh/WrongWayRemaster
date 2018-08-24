@@ -1,5 +1,7 @@
 package org.usfirst.frc.team3414.actuators;
 
+import edu.wpi.first.wpilibj.DriverStation;
+
 public class ActuatorConfig {
 	public static final int LEFT_JOY_ID = 0;
 	public static final int RIGHT_JOY_ID = 1;
@@ -14,7 +16,7 @@ public class ActuatorConfig {
 	public static final int INTAKE_ID_2 = 8;
 	public static final int ANGLER_ID = 6;
 	public static int autonNumber = 1;
-	public static final String autoFile = new String("C:/test "+autonNumber +".csv"); // /home/lvuser/recordedAuto" + autonNumber + AutonInput.getPosInput() + AutonInput.getRecordingLayout() + ".csv");
+
 	/* imported code
 	 * //talons
 		talonLeftFront = new TalonSRX(1);//3  1   3

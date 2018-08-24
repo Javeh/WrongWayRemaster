@@ -11,7 +11,6 @@ public class Auton {
 	 */
 	private double cir = 19.634954084936207740391521145497;
 	private double tickratioIn =	360/cir;
-	static Controller controller = new Controller();
 	public double getTravelledInches(double origin, double current) {
 		//using this formula Distance traveled = (Encoder ticks / 360) * circumference 
 		return ((current/360) * cir) - ((origin/360) * cir);

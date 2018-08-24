@@ -8,6 +8,8 @@ import java.util.Scanner;
 
 import org.usfirst.frc.team3414.actuators.ActuatorConfig;
 
+import edu.wpi.first.wpilibj.DriverStation;
+
 //TODO Make sure you put in else statements to stop motors
 public class Controller {
 	public TankControl tankControl = new TankControl();
@@ -24,7 +26,7 @@ public class Controller {
 		tankControl.teleopInit();
 	}
 
-	public void run() {
+	public void teleop() {
 		tankControl.teleop();
 		gamepadControl.teleop();
 	}
@@ -39,6 +41,7 @@ public class Controller {
 	FileWriter writer;
 //TODO IN PLAYBACK, POTENTIALLY BOOST DRIVE TRAIN WITH GLOBAL VARIABLE POWER MODIFIER 
 	public void recordInit() throws IOException {
+		 String autoFile = (("/home/lvuser/recordedAuto" + ActuatorConfig.autonNumber + DriverStation.getInstance().getGameSpecificMessage() + ".csv"));
 		startTime = System.currentTimeMillis();
 		// record the time we started recording
 
@@ -46,10 +49,13 @@ public class Controller {
 		// as the argument in this method, as of 2015 it is
 		// /home/lvuser/recordedAuto.csv
 
-		writer = new FileWriter(ActuatorConfig.autoFile);
+		writer = new FileWriter(autoFile);
 	}
 	
 	public void record() throws IOException {
+	//	public String autoFile = new String(("/home/lvuser/recordedAuto" + ActuatorConfig.autonNumber + DriverStation.getInstance().getGameSpecificMessage() + ".csv"));
+		 String autoFile = (("/home/lvuser/recordedAuto" + ActuatorConfig.autonNumber + DriverStation.getInstance().getGameSpecificMessage() + ".csv"));
+
 		if(gamepadControl.isRecording()) {
 		if (writer != null) {
 			// start each "frame" with the elapsed time since we started recording
@@ -111,10 +117,12 @@ public class Controller {
 	double nextDouble;
 
 	public void replayInit() throws FileNotFoundException {
+		 String autoFile = (("/home/lvuser/recordedAuto" + ActuatorConfig.autonNumber + DriverStation.getInstance().getGameSpecificMessage() + ".csv"));
+
 		// create a scanner to read the file created during BTMacroRecord
 		// scanner is able to read out the doubles recorded into recordedAuto.csv (as of
 		// 2015)
-		scanner = new Scanner(new File(ActuatorConfig.autoFile));
+		scanner = new Scanner(new File(autoFile));
 
 		// let scanner know that the numbers are separated by a comma or a newline, as
 		// it is a .csv file
@@ -125,6 +133,8 @@ public class Controller {
 	}
 
 	public void replay() {
+		 String autoFile = (("/home/lvuser/recordedAuto" + ActuatorConfig.autonNumber + DriverStation.getInstance().getGameSpecificMessage() + ".csv"));
+
 		// if recordedAuto.csv has a double to read next, then read it
 		if ((scanner != null) && (scanner.hasNextDouble())) {
 			double t_delta;

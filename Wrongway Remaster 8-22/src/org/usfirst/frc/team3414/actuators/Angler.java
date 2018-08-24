@@ -28,20 +28,7 @@ public class Angler {
 		angler.set(ControlMode.PercentOutput, 0);
 		anglerSpeed = 0;
 	}
-	public void outtake() {
-		intake.setSpeed(1);
-		intakeSpeed = 1;
-	}
-	public void intake() {
-		intake.setSpeed(-.75);
-		intakeSpeed = 1;
 
-	}
-	public void intakeOff() {
-		intake.setSpeed(0);
-		intakeSpeed = 0;
-
-	}
 	public void unjam() {
 		intake.spin();
 	}
@@ -69,6 +56,17 @@ public class Angler {
 	public void intakeSetSpeed(double speed) {
 		intake.setSpeed(speed);
 	}
-
+	public void outtakePlace() {
+		intake.outtakePlace();
+	}
+	public void outtake() {
+		intake.outtake();
+	}
+	public void intake() {
+		intake.intake();
+	}
+	public void intakeOff() {
+		intake.off();
+	}
 	}
 

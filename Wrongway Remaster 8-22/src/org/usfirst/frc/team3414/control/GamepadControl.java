@@ -20,10 +20,10 @@ public class GamepadControl {
 	public void auton() {
 	}
 	public boolean isRecording() {
-		if(pad.getRawButton(GamepadConfig.RECORD_BUTTON)) {
+		//TODO currently hardcoded to record the teleop with just the layout being relevant.
+		if(pad.getRawButton(GamepadConfig.RECORD_BUTTON)) {}
 			recordboolean = true;
-			SmartDashboard.putString("Recording:", "This teleop session will be recorded under the file name" + ActuatorConfig.autoFile);
-		}
+		//	SmartDashboard.putString("Recording:", "This teleop session will be recorded under the file name" + ActuatorConfig.autoFile);
 		return recordboolean;
 		
 	}
@@ -34,8 +34,15 @@ public class GamepadControl {
 		else if (pad.getRawButton(GamepadConfig.SPIT_BUTTON)) {
 			angler.outtake();
 		}
+		else if ((pad.getRawButton(GamepadConfig.SPIT_BUTTON)) && (pad.getRawButton(GamepadConfig.PLACE_BUTTON))) {
+			angler.outtakePlace();
+		}
+		
 		else if(pad.getRawButton(GamepadConfig.UNJAM_BUTTON)) {
 			angler.unjam();
+		}
+		else {
+			angler.intakeOff();
 		}
 /*		if(pad.getRawButton((GamepadConfig.ANGLE_DOWN_BUTTON))) {
 			angler.goDown();
@@ -46,24 +53,65 @@ public class GamepadControl {
 		else if ((pad.getPOV() == 180) || (pad.getPOV() == 225) || (pad.getPOV() == 135)) {
 			angler.goDown();
 		}
-	
-		else if(pad.getRawButton((GamepadConfig.ANGLE_UP_BUTTON))) {
-			angler.goUp();
-		}
 		else {
 			angler.off();
 		}
 		if(pad.getRawButton((GamepadConfig.DOWN_BUTTON))) {
 			elevator.goDown();
 		}
-		else if(pad.getRawButton((GamepadConfig.UP_BUTTON))) {
+		else if(pad.getRawButton((GamepadConfig.UP_BUTTON))) { //TODO original code uses talon limit. The goUp method uses a DI
 			elevator.goUp();
 		}
 		else {
 			elevator.off();
 		}
-		
 	}
+//		if (gamepad.getButtonState(5) &&
+//				!(ActuatorConfig.getInstance().getLiftTalonTwo().getSensorCollection().isFwdLimitSwitchClosed()))
+//		// top
+//		{
+//			ActuatorConfig.getInstance().getLift().setSpeed(-.75);//-55,-.45 ,-.40
+//			
+////			System.out.println(ActuatorConfig.getInstance().getLiftTalonTwo().getSelectedSensorVelocity(0));
+////			System.out.println("Quad:" + ActuatorConfig.getInstance().getLiftTalonTwo().getSensorCollection().getQuadraturePosition());
+////		
+////		//motion magic	
+////			 double liftGamepad = gamepad.getY();
+////		//	 double targetPos = liftGamepad *4096 * 10.0;
+////			 double targetPos = 29545;
+////
+////
+////		 ActuatorConfig.getInstance().getLiftTalonTwo().set(ControlMode.MotionMagic, targetPos); 		
+//		
+//		}
+//
+//		else if (gamepad.getButtonState(7) &&
+//				(!(ActuatorConfig.getInstance().getLiftTalonTwo().getSensorCollection().isRevLimitSwitchClosed())
+//						|| ActuatorConfig.getInstance().limitSwitchBottomLift().isHit()))
+//		// bottom
+//		{
+//			ActuatorConfig.getInstance().getLift().setSpeed(.55);//.45,.37, .35
+//			
+////			System.out.println(ActuatorConfig.getInstance().getLiftTalonTwo().getSelectedSensorVelocity(0));
+////			System.out.println("Quad:" + ActuatorConfig.getInstance().getLiftTalonTwo().getSensorCollection().getQuadraturePosition());
+////			
+//////			//motion magic	
+////			 double liftGamepad = gamepad.getY();
+////			// double targetPos = liftGamepad *4096 * 10.0;
+////			 double targetPos = 0;
+////
+////		 ActuatorConfig.getInstance().getLiftTalonTwo().set(ControlMode.MotionMagic, targetPos);
+//			
+//		}
+//
+//		else
+//		{
+//			ActuatorConfig.getInstance().getLift().setSpeed(0);
+//		}
+//
+//	}
+		
+	
 	public void elevatorSetSpeed(double speed) {
 		elevator.setSpeed(speed);
 	}

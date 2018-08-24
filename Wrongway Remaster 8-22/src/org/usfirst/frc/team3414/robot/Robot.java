@@ -14,8 +14,8 @@ import org.usfirst.frc.team3414.auton.AutonInput;
 import org.usfirst.frc.team3414.control.Controller;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-
-/**
+//TODO TONIGHT, MAKE SURE AUTON PICKER WORKS, GRADLE DEPLOYMENT, STATIC ClEANUP, PUT IT ALL ON GIT 
+/*
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
  * documentation. If you change the name of this class or the package after
@@ -26,7 +26,7 @@ public class Robot extends IterativeRobot {
 	private static final String kDefaultAuto = "Default";
 	private static final String kCustomAuto = "My Auto";
 	private String m_autoSelected;
-	static Controller control = new Controller();
+	Controller control = new Controller();
 	/**
 	 * This function is run when the robot is first started up and should be used
 	 * for any initialization code.
@@ -87,7 +87,7 @@ public class Robot extends IterativeRobot {
 	 * This function is called periodically during operator control.
 	 */
 	public void teleopPeriodic() {
-		control.run();
+		control.teleop();
 		try {
 			control.record();
 		} catch (IOException e) {

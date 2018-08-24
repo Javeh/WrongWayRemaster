@@ -4,10 +4,10 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-
+//When dealing with intake, the old code references intake motor one, in this case it's the front talon
 public class DoubleMotor {
-	public TalonSRX front;
-	public TalonSRX rear;
+	public TalonSRX front; //MotorOne (Intake)
+	public TalonSRX rear; //MotorTwo (Intake)
 	double globalspeed;
 	public DoubleMotor(int frontID, int rearID) {
 		front = new TalonSRX(frontID);
@@ -66,13 +66,29 @@ public class DoubleMotor {
 		return globalspeed;
 	}
 	public void spin() {
-		front.set(ControlMode.PercentOutput, -1);
-		rear.set(ControlMode.PercentOutput, 1);
+		front.set(ControlMode.PercentOutput, .5);
+		rear.set(ControlMode.PercentOutput, -.5);
 	}
 	public void teleopInit() {
 		front.setNeutralMode(NeutralMode.Brake);
 		rear.setNeutralMode(NeutralMode.Brake);
 
+	}
+	public void intake() {
+		front.set(ControlMode.PercentOutput, -1);
+		rear.set(ControlMode.PercentOutput, -.7);
+	}
+	public void outtakePlace() {
+		front.set(ControlMode.PercentOutput, .38);
+		rear.set(ControlMode.PercentOutput, .38);
+}
+	public void outtake() {
+		front.set(ControlMode.PercentOutput, .45);
+		rear.set(ControlMode.PercentOutput, .45);
+	}
+	public void off() {
+		front.set(ControlMode.PercentOutput, 0);
+		rear.set(ControlMode.PercentOutput, 0);
 	}
 	
 }
